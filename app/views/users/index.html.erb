@@ -1,0 +1,30 @@
+<h1>Listing users</h1>
+
+<%= define_grid(@user_grid, hide_submit_button: true, hide_reset_button: true ) do |g|
+
+	g.column name: 'users', attribute: 'name', detach_with_id: :user_filter do |user|
+		user.name if user.name
+	end
+	
+	g.column name: 'Project', model: Project, attribute: 'name', detach_with_id: :project_filter, custom_filter: :auto do |u|
+		raw u.projects(true).collect { |p| p.name }.join("<br/>") if u.projects
+	end
+
+	g.column name: 'Task', model: Task, attribute: 'name', detach_with_id: :task_filter, custom_filter: :auto do |u|
+		raw u.tasks(true).collect { |t| t.name }.join("<br/>") if u.tasks
+	end
+
+end %>
+
+  	<table>
+	  <tr><td>User</td><td><%= grid_filter(@user_grid, :user_filter) %> </td></tr>
+	  <tr><td>Project</td><td><%= grid_filter(@user_grid, :project_filter ) %> </td></tr>
+	  <tr><td>Task</td><td><%= grid_filter(@user_grid, :task_filter ) %> </td></tr>
+	</table>
+  <button class="wg-external-submit-button" data-grid-name="grid">submit</button>
+  <button class="wg-external-reset-button" data-grid-name="grid">reset</button>
+
+  <%= render_grid(@user_grid) %>
+
+
+

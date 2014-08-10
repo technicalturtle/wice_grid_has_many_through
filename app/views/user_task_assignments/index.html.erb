@@ -1,0 +1,29 @@
+<h1>Listing user_task_assignments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_task_assignments.each do |user_task_assignment| %>
+      <tr>
+        <td><%= user_task_assignment.task_id %></td>
+        <td><%= user_task_assignment.user_id %></td>
+        <td><%= link_to 'Show', user_task_assignment %></td>
+        <td><%= link_to 'Edit', edit_user_task_assignment_path(user_task_assignment) %></td>
+        <td><%= link_to 'Destroy', user_task_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User task assignment', new_user_task_assignment_path %>

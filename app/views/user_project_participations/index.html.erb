@@ -1,0 +1,29 @@
+<h1>Listing user_project_participations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_project_participations.each do |user_project_participation| %>
+      <tr>
+        <td><%= user_project_participation.project_id %></td>
+        <td><%= user_project_participation.user_id %></td>
+        <td><%= link_to 'Show', user_project_participation %></td>
+        <td><%= link_to 'Edit', edit_user_project_participation_path(user_project_participation) %></td>
+        <td><%= link_to 'Destroy', user_project_participation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User project participation', new_user_project_participation_path %>

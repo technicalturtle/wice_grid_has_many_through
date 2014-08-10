@@ -1,0 +1,6 @@
+rails g scaffold User name
+rails g scaffold Project name
+rails g scaffold User_project_participation project_id user_id
+
+rails g scaffold Task name
+rails g scaffold User_task_assignment task_id user_id

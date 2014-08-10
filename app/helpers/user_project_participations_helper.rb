@@ -1,0 +1,2 @@
+module UserProjectParticipationsHelper
+end
